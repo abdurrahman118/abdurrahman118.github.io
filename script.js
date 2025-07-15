@@ -29,13 +29,13 @@ document.querySelectorAll('.main-btn').forEach(btn => {
 // Auto-shuffle portfolio images and videos
 function startPortfolioShuffle() {
   const shuffleCards = document.querySelectorAll('.auto-shuffle');
-  
+
   shuffleCards.forEach((card, index) => {
     // Stagger the start time for each card
     setTimeout(() => {
       const mainMedia = card.querySelector('.portfolio-img-main, .portfolio-video-main');
       const altMedia = card.querySelector('.portfolio-img-alt, .portfolio-video-alt');
-      
+
       if (mainMedia && altMedia) {
         // Play videos if they exist
         if (mainMedia.tagName === 'VIDEO') {
@@ -44,10 +44,10 @@ function startPortfolioShuffle() {
         if (altMedia.tagName === 'VIDEO') {
           altMedia.play();
         }
-        
+
         // Random interval between 3-6 seconds for each card
         const randomInterval = 3000 + Math.random() * 3000;
-        
+
         setInterval(() => {
           altMedia.style.animation = 'none';
           setTimeout(() => {
@@ -88,7 +88,7 @@ const animationObserver = new IntersectionObserver((entries) => {
       else if (entry.target.classList.contains('skills-grid')) {
         animateSkillBars();
       }
-      
+
       // Stop observing after animation triggers
       animationObserver.unobserve(entry.target);
     }
@@ -104,11 +104,11 @@ document.querySelectorAll('[data-animate], .animate-heading, .animate-heading-ce
 function handleScrollAnimations() {
   const scrollPosition = window.scrollY;
   const windowHeight = window.innerHeight;
-  
+
   document.querySelectorAll('[data-animate]').forEach(el => {
     const elementPosition = el.getBoundingClientRect().top + scrollPosition;
     const elementHeight = el.offsetHeight;
-    
+
     // Check if element is in viewport
     if (scrollPosition + windowHeight * 0.8 > elementPosition && 
         scrollPosition < elementPosition + elementHeight) {
@@ -127,13 +127,13 @@ function animateSkillBars() {
     const percent = parseInt(el.getAttribute('data-skill'));
     const fill = el.querySelector('.skill-bar-fill');
     const percentSpan = el.querySelector('span');
-    
+
     fill.style.width = '0%';
-    
+
     // Count up animation
     let currentPercent = 0;
     const increment = percent / 60; // 60 frames for smooth animation
-    
+
     const countUp = () => {
       currentPercent += increment;
       if (currentPercent >= percent) {
@@ -142,12 +142,12 @@ function animateSkillBars() {
         fill.style.width = currentPercent + '%';
         return;
       }
-      
+
       percentSpan.textContent = Math.round(currentPercent) + '%';
       fill.style.width = currentPercent + '%';
       requestAnimationFrame(countUp);
     };
-    
+
     setTimeout(() => {
       countUp();
     }, 400);
@@ -206,14 +206,14 @@ document.querySelectorAll('.portfolio-card').forEach(card => {
   card.addEventListener('click', () => {
     const projectId = card.getAttribute('data-project');
     const project = projectData[projectId];
-    
+
     if (project) {
       const mediaContent = project.videos ? 
         `<video src="${project.videos[0]}" controls class="modal-video"></video>
          <video src="${project.videos[1]}" controls class="modal-video"></video>` :
         `<img src="${project.images[0]}" alt="${project.title}">
          <img src="${project.images[1]}" alt="${project.title} Preview">`;
-      
+
       projectModal.innerHTML = `
         <div class="modal-close" id="modal-close">&times;</div>
         <div class="modal-content-top">
@@ -241,14 +241,14 @@ document.querySelectorAll('.portfolio-card').forEach(card => {
           ${mediaContent}
         </div>
       `;
-      
+
       // Show modal
       modalBg.classList.add('active');
       projectModal.classList.add('active');
-      
+
       // Close modal handlers
       document.getElementById('modal-close').onclick = closeModal;
-      
+
       // Pause any playing videos when modal closes
       const modalVideos = projectModal.querySelectorAll('video');
       modalBg.addEventListener('click', function bgClick(e) {
@@ -263,11 +263,11 @@ document.querySelectorAll('.portfolio-card').forEach(card => {
 function closeModal() {
   // Pause any playing videos
   document.querySelectorAll('.modal-video').forEach(video => video.pause());
-  
+
   // Hide modal
   modalBg.classList.remove('active');
   projectModal.classList.remove('active');
-  
+
   // Reset modal transform after animation
   setTimeout(() => {
     if (!projectModal.classList.contains('active')) {
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Trigger initial scroll check
   handleScrollAnimations();
   setActiveNavLink();
-  
+
   // Initialize contact header animation
   const contactHeader = document.querySelector('.contact-header h2');
   if (contactHeader) {
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }, { threshold: 0.3 });
-    
+
     contactHeaderObserver.observe(contactHeader);
   }
 });
