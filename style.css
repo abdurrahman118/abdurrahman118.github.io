@@ -812,10 +812,13 @@ footer {
 
 .copyright {
   text-align: center;
-  padding-top: 3rem;
+  width: 100%;
+  padding: 20px 0;
+  font-size: 1rem;
+  color: var(--text-muted);
   border-top: 1px solid var(--border-color);
-  max-width: 1400px;
-  margin: 0 auto;
+  margin-top: 2rem;
+}
 }
 
 /* ============================================= */
