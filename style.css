@@ -1190,3 +1190,11 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+.copyright {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
