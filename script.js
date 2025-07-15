@@ -170,7 +170,7 @@ const projectData = {
     date: "November 2024",
     client: "Ty Smith,Creative Agency",
     brief: "Clients Wants Stunning Logo's and poster designs for their brands companies or products I create them Professional and stunning Logos and posters .Result : Clients were amazed and satisfied with my work",
-    images: ["upwork client ty ad template.jpg", "Add a heading.jpg"]
+    images: ["Add a heading.jpg", "upwork client ty ad template.jpg"]
   },
   project3: {
     title: "AI Image Generation",
@@ -178,7 +178,7 @@ const projectData = {
     date: "Feb 2025",
     client: "Robin Upwork Client",
     brief: "Produced a series of custom AI-generated images for social media campaigns and advertising materials,Arts, Avatars... Leveraged cutting-edge AI image generation tools to create unique, on-brand visuals that increased social media engagement.",
-    images: ["472531613e03a0489b8d73c14838dd8e.jpg", "whats-the-most-realistic-ai-photo-generator-online-v0-gk14w6sox4vd1.jpg"]
+    images: ["whats-the-most-realistic-ai-photo-generator-online-v0-gk14w6sox4vd1.jpg", "472531613e03a0489b8d73c14838dd8e.jpg"]
   },
   project4: {
     title: "Video Editing",
@@ -194,7 +194,7 @@ const projectData = {
     date: "December 2024",
     client: "E-commerce Platform",
     brief: "Implemented a comprehensive SEO content strategy that boosted organic traffic by 180%.Buil Authority with high DA Guestposts, Created AI-optimized blog posts, product descriptions, and meta content that improved search rankings while maintaining authentic, engaging copy.",
-    images: ["Screenshot 2025-07-06 032220.jpg", "Screenshot 2025-07-06 032420.jpg"]
+    images: ["Screenshot 2025-07-06 032420.jpg", "Screenshot 2025-07-06 032220.jpg"]
   }
 };
 
