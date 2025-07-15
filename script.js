@@ -15,7 +15,7 @@ function setActiveNavLink() {
 window.addEventListener('scroll', setActiveNavLink);
 
 // Main button ripple animation
-document.querySelectorAll('.animated-btn').forEach(btn => {
+document.querySelectorAll('.main-btn').forEach(btn => {
   btn.addEventListener('click', function(e) {
     let circle = document.createElement('span');
     circle.classList.add('ripple');
@@ -63,32 +63,63 @@ function startPortfolioShuffle() {
 }
 
 // Start shuffle when page loads
-window.addEventListener('load', startPortfolioShuffle);
+document.addEventListener('DOMContentLoaded', startPortfolioShuffle);
 
-// Intersection Observer for animations
+// Enhanced Intersection Observer for animations
 const observerOptions = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.1
+  threshold: 0.2
 };
 
-const observer = new IntersectionObserver((entries) => {
+const animationObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('animate');
-      
-      // Trigger skill bar animation and counting
-      if (entry.target.classList.contains('skills-grid')) {
+      // Add animation class based on element type
+      if (entry.target.classList.contains('animate-heading')) {
+        entry.target.classList.add('animate-slide-in-left');
+      } 
+      else if (entry.target.classList.contains('animate-heading-center')) {
+        entry.target.classList.add('animate-fade-in-scale');
+      }
+      else if (entry.target.classList.contains('animate-text')) {
+        entry.target.classList.add('animate-fade-in-up');
+      }
+      else if (entry.target.classList.contains('skills-grid')) {
         animateSkillBars();
       }
+      
+      // Stop observing after animation triggers
+      animationObserver.unobserve(entry.target);
     }
   });
 }, observerOptions);
 
 // Observe all animated elements
-document.querySelectorAll('.animate-heading, .animate-heading-center, .animate-text, .skills-grid').forEach(el => {
-  observer.observe(el);
+document.querySelectorAll('[data-animate], .animate-heading, .animate-heading-center, .animate-text, .skills-grid').forEach(el => {
+  animationObserver.observe(el);
 });
+
+// Scroll-based animation handler
+function handleScrollAnimations() {
+  const scrollPosition = window.scrollY;
+  const windowHeight = window.innerHeight;
+  
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    const elementPosition = el.getBoundingClientRect().top + scrollPosition;
+    const elementHeight = el.offsetHeight;
+    
+    // Check if element is in viewport
+    if (scrollPosition + windowHeight * 0.8 > elementPosition && 
+        scrollPosition < elementPosition + elementHeight) {
+      el.classList.add('in-view');
+    }
+  });
+}
+
+// Initialize scroll animations
+window.addEventListener('scroll', handleScrollAnimations);
+window.addEventListener('load', handleScrollAnimations);
 
 // Animate skill bars with counting
 function animateSkillBars() {
@@ -122,22 +153,7 @@ function animateSkillBars() {
     }, 400);
   });
 }
-// Contact header animation on scroll
-const contactHeader = document.querySelector('.contact-header h2');
 
-function checkVisibility() {
-  const rect = contactHeader.getBoundingClientRect();
-  const isVisible = (rect.top <= window.innerHeight * 0.8);
-  
-  if(isVisible) {
-    contactHeader.classList.add('animate-heading-center');
-    window.removeEventListener('scroll', checkVisibility);
-  }
-}
-
-// Initialize
-window.addEventListener('scroll', checkVisibility);
-checkVisibility(); // Run once on load
 // Project data
 const projectData = {
   project1: {
@@ -156,7 +172,6 @@ const projectData = {
     brief: "Clients Wants Stunning Logo's and poster designs for their brands companies or products I create them Professional and stunning Logos and posters .Result : Clients were amazed and satisfied with my work",
     images: ["upwork client ty ad template.jpg", "Add a heading.jpg"]
   },
- 
   project3: {
     title: "AI Image Generation",
     category: "Digital Art",
@@ -165,7 +180,6 @@ const projectData = {
     brief: "Produced a series of custom AI-generated images for social media campaigns and advertising materials,Arts, Avatars... Leveraged cutting-edge AI image generation tools to create unique, on-brand visuals that increased social media engagement.",
     images: ["472531613e03a0489b8d73c14838dd8e.jpg", "whats-the-most-realistic-ai-photo-generator-online-v0-gk14w6sox4vd1.jpg"]
   },
-
   project4: {
     title: "Video Editing",
     category: "Video Editing",
@@ -174,7 +188,6 @@ const projectData = {
     brief: "Edit Long or short video content for organic growth and audience engagment",
     videos: ["Video Ad   2.mp4", "WhatsApp Video 2025-07-04 at 2.57.02 PM.mp4"]
   },
-  
   project5: {
     title: "Off-Page SEO",
     category: "Guest Posting",
@@ -182,8 +195,7 @@ const projectData = {
     client: "E-commerce Platform",
     brief: "Implemented a comprehensive SEO content strategy that boosted organic traffic by 180%.Buil Authority with high DA Guestposts, Created AI-optimized blog posts, product descriptions, and meta content that improved search rankings while maintaining authentic, engaging copy.",
     images: ["Screenshot 2025-07-06 032220.jpg", "Screenshot 2025-07-06 032420.jpg"]
-  },
-  
+  }
 };
 
 // Project modal logic
@@ -229,17 +241,33 @@ document.querySelectorAll('.portfolio-card').forEach(card => {
           ${mediaContent}
         </div>
       `;
+      
+      // Show modal
       modalBg.classList.add('active');
       projectModal.classList.add('active');
+      
+      // Close modal handlers
       document.getElementById('modal-close').onclick = closeModal;
+      
+      // Pause any playing videos when modal closes
+      const modalVideos = projectModal.querySelectorAll('video');
+      modalBg.addEventListener('click', function bgClick(e) {
+        if (e.target === modalBg) {
+          modalVideos.forEach(video => video.pause());
+        }
+      });
     }
   });
 });
 
-modalBg.onclick = closeModal;
 function closeModal() {
+  // Pause any playing videos
+  document.querySelectorAll('.modal-video').forEach(video => video.pause());
+  
+  // Hide modal
   modalBg.classList.remove('active');
   projectModal.classList.remove('active');
+  
   // Reset modal transform after animation
   setTimeout(() => {
     if (!projectModal.classList.contains('active')) {
@@ -247,3 +275,25 @@ function closeModal() {
     }
   }, 300);
 }
+
+// Initialize all animations on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Trigger initial scroll check
+  handleScrollAnimations();
+  setActiveNavLink();
+  
+  // Initialize contact header animation
+  const contactHeader = document.querySelector('.contact-header h2');
+  if (contactHeader) {
+    const contactHeaderObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-scale');
+          contactHeaderObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    contactHeaderObserver.observe(contactHeader);
+  }
+});
