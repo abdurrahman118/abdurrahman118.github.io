@@ -604,22 +604,6 @@ header {
   font-weight: 700;
   font-size: 0.9rem;
 }
-.skill-bar-fill {
-  transition: width 2s ease-out; /* Smooth animation */
-  will-change: width; /* Optimize for animation */
-}
-
-/* Mobile-specific skill bar adjustments */
-@media (max-width: 768px) {
-  .skill-bar {
-    height: 20px; /* Thinner bars on mobile */
-  }
-  
-  .skill-bar span {
-    font-size: 0.8rem; /* Smaller percentage text */
-    right: 5px; /* Less padding */
-  }
-}
 
 /* ============================================= */
 /* ============ TEAM SECTION ================== */
@@ -828,13 +812,10 @@ footer {
 
 .copyright {
   text-align: center;
-  width: 100%;
-  padding: 20px 0;
-  font-size: 1rem;
-  color: var(--text-muted);
+  padding-top: 3rem;
   border-top: 1px solid var(--border-color);
-  margin-top: 2rem;
-}
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* ============================================= */
@@ -1205,12 +1186,4 @@ footer {
 [data-animate].in-view {
   opacity: 1;
   transform: translateY(0);
-}
-.copyright {
-  animation: fadeIn 1s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
