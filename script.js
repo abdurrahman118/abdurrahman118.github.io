@@ -122,7 +122,22 @@ function animateSkillBars() {
     }, 400);
   });
 }
+// Contact header animation on scroll
+const contactHeader = document.querySelector('.contact-header h2');
 
+function checkVisibility() {
+  const rect = contactHeader.getBoundingClientRect();
+  const isVisible = (rect.top <= window.innerHeight * 0.8);
+  
+  if(isVisible) {
+    contactHeader.classList.add('animate-heading-center');
+    window.removeEventListener('scroll', checkVisibility);
+  }
+}
+
+// Initialize
+window.addEventListener('scroll', checkVisibility);
+checkVisibility(); // Run once on load
 // Project data
 const projectData = {
   project1: {
