@@ -604,6 +604,22 @@ header {
   font-weight: 700;
   font-size: 0.9rem;
 }
+.skill-bar-fill {
+  transition: width 2s ease-out; /* Smooth animation */
+  will-change: width; /* Optimize for animation */
+}
+
+/* Mobile-specific skill bar adjustments */
+@media (max-width: 768px) {
+  .skill-bar {
+    height: 20px; /* Thinner bars on mobile */
+  }
+  
+  .skill-bar span {
+    font-size: 0.8rem; /* Smaller percentage text */
+    right: 5px; /* Less padding */
+  }
+}
 
 /* ============================================= */
 /* ============ TEAM SECTION ================== */
