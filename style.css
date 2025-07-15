@@ -1139,6 +1139,7 @@
     transform: translateY(30px);
   }
 
+
   /* Delayed animations */
   .animate-text-delay-1 { animation-delay: 0.2s; }
   .animate-text-delay-2 { animation-delay: 0.4s; }
@@ -1178,6 +1179,24 @@
     opacity: 1;
     transform: translateY(0);
   }
+/* Fix for contact header animation */
+.animate-heading-center {
+  animation: fadeInScale 1s ease-out forwards;
+  opacity: 1; /* Ensure it stays visible after animation */
+  transform: scale(1); /* Final state */
+}
+
+/* Update the keyframes to maintain final state */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 /* ============== UPDATED COLOR SCHEME ============== */
 :root {
   /* New Color Palette based on reference images */
