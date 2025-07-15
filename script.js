@@ -131,7 +131,7 @@ const projectData = {
     date: "June 2025",
     client: "Anik Singal, Complily, Inc.",
     brief: "Produced a high-impact AI-generated video campaign using advanced tools for voiceover, visual creation, and post-production. Combined natural-sounding AI voiceovers with dynamic visuals and smooth editing to create a polished, engaging final product. The project demonstrated the power of AI in accelerating content production while maintaining high visual and audio quality.",
-    videos: ["attached_assets/Funeral video ad_1751734411577.mp4", "attached_assets/dreamina-2025-07-04-9470-Cinematic Jurassic Park-style Velocirapt..._1751734460924.mp4"]
+    videos: ["Funeral video ad.mp4", "dreamina-2025-07-04-9470-Cinematic Jurassic Park-style Velocirapt....mp4"]
   },
   project2: {
     title: "Graphic Designing",
@@ -139,7 +139,7 @@ const projectData = {
     date: "November 2024",
     client: "Ty Smith,Creative Agency",
     brief: "Clients Wants Stunning Logo's and poster designs for their brands companies or products I create them Professional and stunning Logos and posters .Result : Clients were amazed and satisfied with my work",
-    images: ["assets/upwork client ty ad template.jpg", "assets/Add a heading.jpg"]
+    images: ["upwork client ty ad template.jpg", "Add a heading.jpg"]
   },
  
   project3: {
@@ -148,7 +148,7 @@ const projectData = {
     date: "Feb 2025",
     client: "Robin Upwork Client",
     brief: "Produced a series of custom AI-generated images for social media campaigns and advertising materials,Arts, Avatars... Leveraged cutting-edge AI image generation tools to create unique, on-brand visuals that increased social media engagement.",
-    images: ["assets/whats-the-most-realistic-ai-photo-generator-online-v0-gk14w6sox4vd1.jpg", "assets/472531613e03a0489b8d73c14838dd8e.jpg"]
+    images: ["472531613e03a0489b8d73c14838dd8e.jpg", "whats-the-most-realistic-ai-photo-generator-online-v0-gk14w6sox4vd1.jpg"]
   },
 
   project4: {
@@ -157,7 +157,7 @@ const projectData = {
     date: "January 2025",
     client: "Marketing Company,Brands.",
     brief: "Edit Long or short video content for organic growth and audience engagment",
-    videos: ["assets/Video Ad   2.mp4", "assets/WhatsApp Video 2025-07-04 at 2.57.02 PM.mp4"]
+    videos: ["Video Ad   2.mp4", "WhatsApp Video 2025-07-04 at 2.57.02 PM.mp4"]
   },
   
   project5: {
@@ -166,7 +166,7 @@ const projectData = {
     date: "December 2024",
     client: "E-commerce Platform",
     brief: "Implemented a comprehensive SEO content strategy that boosted organic traffic by 180%.Buil Authority with high DA Guestposts, Created AI-optimized blog posts, product descriptions, and meta content that improved search rankings while maintaining authentic, engaging copy.",
-    images: ["assets/Screenshot 2025-07-06 032220.jpg", "assets/Screenshot 2025-07-06 032420.jpg"]
+    images: ["Screenshot 2025-07-06 032220.jpg", "Screenshot 2025-07-06 032420.jpg"]
   },
   
 };
